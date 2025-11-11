@@ -50,6 +50,44 @@ cd project
 devcode
 ```
 
+## Development
+
+### Local Testing
+
+Install the package locally for testing:
+
+```bash
+npm install -g .
+```
+
+### Publishing to npm
+
+This package uses GitHub Actions for automated publishing. To publish a new version:
+
+1. Update the version in `package.json`:
+   ```bash
+   npm version patch  # for bug fixes (1.0.0 -> 1.0.1)
+   npm version minor  # for new features (1.0.0 -> 1.1.0)
+   npm version major  # for breaking changes (1.0.0 -> 2.0.0)
+   ```
+
+2. Push the version tag to GitHub:
+   ```bash
+   git push origin main --tags
+   ```
+
+3. The GitHub Action will automatically:
+   - Verify the tag matches package.json version
+   - Publish to npm with provenance
+   - Create a GitHub release
+
+**Prerequisites for publishing:**
+- Set `NPM_TOKEN` secret in GitHub repository settings
+  - Get your npm token from https://www.npmjs.com/settings/[username]/tokens
+  - Create a "Automation" token
+  - Add it to GitHub: Settings → Secrets and variables → Actions → New repository secret
+  - Name: `NPM_TOKEN`
+
 ## License
 
 MIT
