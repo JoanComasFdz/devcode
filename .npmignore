@@ -1,0 +1,6 @@
+test/
+.git/
+.gitignore
+*.log
+.DS_Store
+.vscode/

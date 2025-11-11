@@ -1,0 +1,37 @@
+{
+  "name": "devcode",
+  "version": "1.0.0",
+  "description": "Open VS Code intelligently - in dev container if available, normally otherwise",
+  "main": "bin/devcode.js",
+  "bin": {
+    "devcode": "./bin/devcode.js"
+  },
+  "scripts": {
+    "test": "node test/manual-test.js"
+  },
+  "keywords": [
+    "vscode",
+    "devcontainer",
+    "dev-container",
+    "docker",
+    "cli",
+    "visual-studio-code"
+  ],
+  "author": "Joan Comas",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "bin/",
+    "scripts/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoanComasFdz/devcode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JoanComasFdz/devcode/issues"
+  },
+  "homepage": "https://github.com/JoanComasFdz/devcode#readme"
+}

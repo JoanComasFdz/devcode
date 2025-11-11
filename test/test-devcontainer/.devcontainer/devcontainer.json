@@ -1,0 +1,4 @@
+{
+  "name": "Test Container",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18"
+}
