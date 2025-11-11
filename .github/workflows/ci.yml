@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate package.json
+        run: npm pkg fix --dry-run
+
+      - name: Check package contents
+        run: npm pack --dry-run
+
+      - name: Verify scripts are executable
+        run: |
+          if [ ! -x bin/devcode.js ]; then
+            echo "Error: bin/devcode.js is not executable"
+            exit 1
+          fi
+          if [ ! -x scripts/devcode.sh ]; then
+            echo "Error: scripts/devcode.sh is not executable"
+            exit 1
+          fi
+          echo "All scripts are properly executable"
