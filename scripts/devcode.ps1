@@ -12,6 +12,15 @@ try {
     exit 1
 }
 
+# Check if VS Code is available
+$codeCommand = Get-Command code -ErrorAction SilentlyContinue
+if (-not $codeCommand) {
+    Write-Error "Error: VS Code 'code' command not found."
+    Write-Host "Please ensure VS Code is installed and the 'code' command is in your PATH." -ForegroundColor Red
+    Write-Host "Install VS Code from: https://code.visualstudio.com/" -ForegroundColor Red
+    exit 1
+}
+
 # Check for devcontainer
 $HasDevContainer = (Test-Path "$FullPath\.devcontainer\devcontainer.json") -or
                    (Test-Path "$FullPath\.devcontainer.json")
