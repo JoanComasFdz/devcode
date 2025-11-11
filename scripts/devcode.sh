@@ -14,8 +14,8 @@ fi
 if [ -f "$FOLDER/.devcontainer/devcontainer.json" ] || [ -f "$FOLDER/.devcontainer.json" ]; then
     echo "📦 Dev container detected. Opening in container..."
 
-    # Encode the path in hex
-    ENCODED_PATH=$(echo -n "$FOLDER" | xxd -plain | tr -d '\n')
+    # Encode the path in hex (using od for better portability)
+    ENCODED_PATH=$(echo -n "$FOLDER" | od -A n -t x1 | tr -d ' \n')
 
     # Construct the VS Code remote URI
     URI="vscode-remote://dev-container+${ENCODED_PATH}${FOLDER}"
