@@ -10,6 +10,14 @@ if [ ! -d "$FOLDER" ]; then
     exit 1
 fi
 
+# Check if VS Code is available
+if ! command -v code &> /dev/null; then
+    echo "Error: VS Code 'code' command not found." >&2
+    echo "Please ensure VS Code is installed and the 'code' command is in your PATH." >&2
+    echo "Install VS Code from: https://code.visualstudio.com/" >&2
+    exit 1
+fi
+
 # Check if devcontainer exists
 if [ -f "$FOLDER/.devcontainer/devcontainer.json" ] || [ -f "$FOLDER/.devcontainer.json" ]; then
     echo "📦 Dev container detected. Opening in container..."
